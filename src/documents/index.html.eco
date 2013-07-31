@@ -1,0 +1,35 @@
+---
+layout: 'default'
+title: 'Wild Yahcht Dice'
+---
+
+<% for value, i in ["ones","twos","threes","fours","fives","sixes","fullhouse","smstraight","lgstraigt","chance","kind3","kind4", "yacht"]: %>
+	<div class="score_box <%=value%>" data-bind="click: <%=value%>, css: <%=value%>_active"><%=value%></div>
+<% end %>
+
+<div class="message" data-bind="text: message"></div>
+
+<% for i in [1,2,3,4,5]: %>
+	<div class="dice dice<%=i%>" data-bind="
+		text: dice<%=i%>_value,
+		click: dice<%=i%>_hold_toggle,
+		css: dice<%=i%>_class
+	"></div>
+<% end %>
+
+<button data-bind="click: roll, visible: roll_visible">Roll</button>
+
+<button data-bind="click: new_game, visible: new_game_visible">New Game</button>
+
+<div class="message"></div>
+
+Score
+<div data-bind="text: score"></div>
+Roll Number
+<div data-bind="text: roll_number"></div>
+Turn
+<div data-bind="text: turn"></div>
+Can select score
+<div data-bind="text: can_select_score"></div>
+Yacht number
+<div data-bind="text: yacht_number"></div>
