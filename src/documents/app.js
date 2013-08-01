@@ -1,4 +1,4 @@
-var ko    = require('knockout'),
+var ko       = require('knockout'),
 	wildDice = require('./wildDice.js');
 
 require('./bindings/frontend.js');

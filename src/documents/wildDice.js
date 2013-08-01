@@ -4,7 +4,6 @@ var $     = require('jquery-browserify'),
 module.exports = {
 	message: ko.observable( 'Welcome' ),
 	score: ko.observable( 0 ),
-	turn: ko.observable( 0 ),
 	new_game_visible: ko.observable( true ),
 	roll_visible: ko.observable( false ),
 	turn: ko.observable( 0 ),
