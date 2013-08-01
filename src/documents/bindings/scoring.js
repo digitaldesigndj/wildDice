@@ -31,10 +31,10 @@ wildDice.game_over = ko.dependentObservable( function(){
 	if( self.yacht_number() === 0 ){
 		game_over_turns = 13;
 	}
-	if( ( self.turn() - self.yacht_number() ) === game_over_turns ){
+	if( ( ( self.turn() + 1 /* Don't count first yacht */ ) - self.yacht_number() ) === game_over_turns ){
 		alert( "Game Over, Score: " + self.score() );
 	}
-	if( self.turn() === 13 && self.roll_number() === 3 ){
+	if( self.turn() === 13 && self.roll_number() === 3 && self.yacht_number() === 0 ){
 		// run the Yacht Check for score
 		self.yacht();
 		alert( "Game Over, Score: " + self.score() );
