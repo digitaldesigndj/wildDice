@@ -11,10 +11,13 @@ title: 'Wild Yahcht Dice'
 
 <% for i in [1,2,3,4,5]: %>
 	<div class="dice dice<%=i%>" data-bind="
-		text: dice<%=i%>_value,
 		click: dice<%=i%>_hold_toggle,
 		css: dice<%=i%>_class
-	"></div>
+	">
+	<% for idx in [1,2,3,4,5,6,7,8,9]: %>
+		<div class="cell cell<%=idx%>"></div>
+	<% end %>
+	</div>
 <% end %>
 
 <button data-bind="click: roll, visible: roll_visible">Roll</button>
