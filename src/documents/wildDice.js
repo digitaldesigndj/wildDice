@@ -273,18 +273,31 @@ module.exports = {
 	smstraight_active: ko.observable( true ),
 	smstraight: function(){
 		self = this;
+		var smstraight_array = { 'one': [1,2,3,4], 'two': [2,3,4,5], 'three': [3,4,5,6] };
 		if( self.smstraight_active() && self.can_select_score() ){
-			self.score( self.score() + 30 );
-			self.smstraight_active( false );
-			self.new_turn();
+			$.each( smstraight_array, function( i, v ){
+				if( JSON.stringify( v ) === JSON.stringify( self.dice_array() ) ){
+					self.score( self.score() + 30 );
+					self.smstraight_active( false );
+					self.new_turn();
+				}
+			});
 		}
 	},
 	lgstraigt_active: ko.observable( true ),
 	lgstraigt: function(){
 		self = this;
+		var lgstraight_array = { 'one': [1,2,3,4,5], 'two': [2,3,4,5,6] };
 		if( self.lgstraigt_active() && self.can_select_score() ){
-			self.score( self.score() + 40 );
-			self.lgstraigt_active( false );
+			$.each( lgstraight_array, function( i, v ){
+				console.log( JSON.stringify( v ) );
+				console.log( JSON.stringify( self.dice_array() ) );
+				if( JSON.stringify( v ) === JSON.stringify( self.dice_array() ) ){
+					self.score( self.score() + 40 );
+					self.lgstraigt_active( false );
+					self.new_turn();
+				}
+			});
 			self.new_turn();
 		}
 	},
@@ -337,8 +350,8 @@ module.exports = {
 		self = this;
 		if( self.can_select_score() ){
 			var first_die = 0;
-			console.log( self.dice_array()[0] );
-			console.log( self.countInArray( self.dice_array(), self.dice_array()[0] ) );
+			// console.log( self.dice_array()[0] );
+			// console.log( self.countInArray( self.dice_array(), self.dice_array()[0] ) );
 			if( 5 === self.countInArray( self.dice_array(), self.dice_array()[0] ) ){
 				self.yacht_number( self.yacht_number() + 1 );
 				self.score( self.score() + ( self.yacht_number() * 50 ) );
@@ -367,7 +380,7 @@ module.exports = {
 		self.dice4_wild( false );
 		self.dice5_wild( false );
 		self.roll_number( 0 );
-		console.log('new turn');
+		// console.log('new turn');
 	},
 	countInArray: function( array, what ){
 		var count = 0;
