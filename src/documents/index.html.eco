@@ -3,7 +3,7 @@ layout: 'default'
 title: 'Wild Yahcht Dice'
 ---
 
-<% for value, i in ["ones","twos","threes","fours","fives","sixes","fullhouse","smstraight","lgstraigt","chance","kind3","kind4", "yacht"]: %>
+<% for value, i in ["ones","twos","threes","fours","fives","sixes","fullhouse","smstraight","lgstraigt","chance","kind3","kind4", "yacht", "pass"]: %>
 	<div class="score_box <%=value%>" data-bind="click: <%=value%>, css: <%=value%>_active"><%=value%></div>
 <% end %>
 
@@ -12,6 +12,7 @@ title: 'Wild Yahcht Dice'
 <% for i in [1,2,3,4,5]: %>
 	<div class="dice dice<%=i%>" data-bind="
 		click: dice<%=i%>_hold_toggle,
+		event: { touchstart: dice<%=i%>_hold_toggle },
 		css: dice<%=i%>_class
 	">
 	<% for idx in [1,2,3,4,5,6,7,8,9]: %>
@@ -20,7 +21,7 @@ title: 'Wild Yahcht Dice'
 	</div>
 <% end %>
 
-<button data-bind="click: roll, visible: roll_visible">Roll</button>
+<button data-bind="click: roll, event: { touchstart: roll }, visible: roll_visible">Roll</button>
 
 <button data-bind="click: new_game, visible: new_game_visible">New Game</button>
 
@@ -28,6 +29,8 @@ title: 'Wild Yahcht Dice'
 
 Score
 <div data-bind="text: score"></div>
+Top
+<div data-bind="text: top_total"></div>
 Roll Number
 <div data-bind="text: roll_number"></div>
 Turn
@@ -36,3 +39,9 @@ Can select score
 <div data-bind="text: can_select_score"></div>
 Yacht number
 <div data-bind="text: yacht_number"></div>
+Turns Left
+<div data-bind="text: turns_left"></div>
+Game over turns
+<div data-bind="text: turns_tillgameover"></div>
+Top Bonus?
+<div data-bind="text: bonus"></div>

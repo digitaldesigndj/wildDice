@@ -10,6 +10,7 @@ module.exports = {
 	roll_number: ko.observable( 0 ),
 	can_select_score: ko.observable( false ),
 	can_roll: ko.observable( false ),
+	top_total: ko.observable( 0 ),
 
 	dice1_value: ko.observable(),
 	dice1_wild: ko.observable( false ),
@@ -144,9 +145,6 @@ module.exports = {
 		self.new_game_visible( false );
 		self.turn( 0 );
 	},
-	scoring: function(){
-		
-	},
 	ones_active: ko.observable( true ),
 	ones: function(){
 		self = this;
@@ -156,6 +154,7 @@ module.exports = {
 				if( v === 1 ){
 					scored = true;
 					self.score( self.score() + v );
+					self.top_total( self.top_total() + v );
 				}
 			});
 			if( scored ){
@@ -173,6 +172,7 @@ module.exports = {
 				if( v === 2 ){
 					scored = true;
 					self.score( self.score() + v );
+					self.top_total( self.top_total() + v );
 				}
 			});
 			if( scored ){
@@ -190,6 +190,7 @@ module.exports = {
 				if( v === 3 ){
 					scored = true;
 					self.score( self.score() + v );
+					self.top_total( self.top_total() + v );
 				}
 			});
 			if( scored ){
@@ -207,6 +208,7 @@ module.exports = {
 				if( v === 4 ){
 					scored = true;
 					self.score( self.score() + v );
+					self.top_total( self.top_total() + v );
 				}
 			});
 			if( scored ){
@@ -224,6 +226,7 @@ module.exports = {
 				if( v === 5 ){
 					scored = true;
 					self.score( self.score() + v );
+					self.top_total( self.top_total() + v );
 				}
 			});
 			if( scored ){
@@ -241,6 +244,7 @@ module.exports = {
 				if( v === 6 ){
 					scored = true;
 					self.score( self.score() + v );
+					self.top_total( self.top_total() + v );
 				}
 			});
 			if( scored ){
@@ -298,7 +302,6 @@ module.exports = {
 					self.new_turn();
 				}
 			});
-			self.new_turn();
 		}
 	},
 	chance_active: ko.observable( true ),
@@ -342,6 +345,13 @@ module.exports = {
 				self.kind4_active( false );
 				self.new_turn();
 			}
+		}
+	},
+	pass_active: ko.observable( true ),
+	pass: function(){
+		self = this;
+		if( self.can_select_score() ){
+			self.new_turn();
 		}
 	},
 	yacht_active: ko.observable( true ),

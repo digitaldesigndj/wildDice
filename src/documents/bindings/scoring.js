@@ -21,8 +21,21 @@ wildDice.dice_array = ko.dependentObservable( function(){
 		array.push( this.dice5_value() );
 	}
 	array.sort( function( a, b ){ return a - b } );
-	console.log( array );
+	// check length here, if not 5 turn off scoring
+	// console.log( array );
 	return array;
+}, wildDice );
+
+wildDice.turns_left = ko.dependentObservable( function(){
+	return 12 - this.turn() + this.yacht_number();
+}, wildDice );
+
+wildDice.turns_tillgameover = ko.dependentObservable( function(){
+	var game_over_turns = 12;
+	if( this.yacht_number() === 0 ){
+		game_over_turns = 13;
+	}
+	return game_over_turns;
 }, wildDice );
 
 wildDice.game_over = ko.dependentObservable( function(){
@@ -39,4 +52,19 @@ wildDice.game_over = ko.dependentObservable( function(){
 		self.yacht();
 		alert( "Game Over, Score: " + self.score() );
 	}
+}, wildDice );
+
+wildDice.bonus = ko.dependentObservable( function(){
+	var self       = this,
+		total      = 0,
+		have_bonus = false;
+	if( !have_bonus && !self.ones_active() && !self.twos_active() && !self.threes_active() && !self.fours_active() && !self.fives_active() && !self.sixes_active() ){
+		total = self.top_total();
+		console.log( "TOTAL: "+ total );
+		if( total >= 63 ){
+			self.score( self.score() + 35 );
+			have_bonus = true;
+		}
+	}
+	return have_bonus;
 }, wildDice );
