@@ -1,7 +1,7 @@
 {
-  "name": "javascript-video-poker",
+  "name": "wild-yacht-dice",
   "version": "1.0.0",
-  "description": "Open source video poker",
+  "description": "A wild dice game",
   "engines": {
     "node": "0.10",
     "npm": "1.3"

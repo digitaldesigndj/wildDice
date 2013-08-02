@@ -1,6 +1,6 @@
-# Poker
+# Wild Yacht Dice
 
-A Simple poker game
+A wild dice game
 
 ## Get Started
 
@@ -11,7 +11,7 @@ npm install
 docpad run
 ```
 
-Then visit [http://localhost:9214](http://localhost:9214)
+Then visit [http://localhost:9779](http://localhost:9779)
 
 ## License
 
