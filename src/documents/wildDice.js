@@ -277,7 +277,26 @@ module.exports = {
 	smstraight_active: ko.observable( true ),
 	smstraight: function(){
 		self = this;
-		var smstraight_array = { 'one': [1,2,3,4], 'two': [2,3,4,5], 'three': [3,4,5,6] };
+		var smstraight_array = { 
+			'one1': [1,2,3,4,1],
+			'one2': [1,2,3,4,2],
+			'one3': [1,2,3,4,3],
+			'one4': [1,2,3,4,4],
+			'one5': [1,2,3,4,5],
+			'one6': [1,2,3,4,6],
+			'two1': [2,3,4,5,1],
+			'two2': [2,3,4,5,2],
+			'two3': [2,3,4,5,3],
+			'two4': [2,3,4,5,4],
+			'two5': [2,3,4,5,5],
+			'two6': [2,3,4,5,6],
+			'three1': [3,4,5,6,1],
+			'three2': [3,4,5,6,2],
+			'three3': [3,4,5,6,3],
+			'three4': [3,4,5,6,4],
+			'three5': [3,4,5,6,5],
+			'three6': [3,4,5,6,6]
+		};
 		if( self.smstraight_active() && self.can_select_score() ){
 			$.each( smstraight_array, function( i, v ){
 				if( JSON.stringify( v ) === JSON.stringify( self.dice_array() ) ){
